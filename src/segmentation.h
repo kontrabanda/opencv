@@ -16,6 +16,10 @@ private:
 	int getValidateColor(int color);
 	void filterAvg(int);
 	void filterColors(int*);
+	void dilatation();
+	void erosion();
+	void opening();
+	void closing();
 
 public:
 	Segmentation(Mat& img);
