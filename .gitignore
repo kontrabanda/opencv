@@ -4,3 +4,6 @@
 /resource/*
 !/output
 /output/*
+/CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
