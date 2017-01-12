@@ -7,6 +7,8 @@
 #include <iostream>
 
 #include "segmentation.h"
+#include "elementgetter.h"
+#include "element.h"
 
 using namespace cv;
 using namespace std;

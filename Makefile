@@ -150,6 +150,60 @@ src/action.cpp.s:
 	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/action.cpp.s
 .PHONY : src/action.cpp.s
 
+src/element.o: src/element.cpp.o
+
+.PHONY : src/element.o
+
+# target to build an object file
+src/element.cpp.o:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/element.cpp.o
+.PHONY : src/element.cpp.o
+
+src/element.i: src/element.cpp.i
+
+.PHONY : src/element.i
+
+# target to preprocess a source file
+src/element.cpp.i:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/element.cpp.i
+.PHONY : src/element.cpp.i
+
+src/element.s: src/element.cpp.s
+
+.PHONY : src/element.s
+
+# target to generate assembly for a file
+src/element.cpp.s:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/element.cpp.s
+.PHONY : src/element.cpp.s
+
+src/elementgetter.o: src/elementgetter.cpp.o
+
+.PHONY : src/elementgetter.o
+
+# target to build an object file
+src/elementgetter.cpp.o:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/elementgetter.cpp.o
+.PHONY : src/elementgetter.cpp.o
+
+src/elementgetter.i: src/elementgetter.cpp.i
+
+.PHONY : src/elementgetter.i
+
+# target to preprocess a source file
+src/elementgetter.cpp.i:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/elementgetter.cpp.i
+.PHONY : src/elementgetter.cpp.i
+
+src/elementgetter.s: src/elementgetter.cpp.s
+
+.PHONY : src/elementgetter.s
+
+# target to generate assembly for a file
+src/elementgetter.cpp.s:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/elementgetter.cpp.s
+.PHONY : src/elementgetter.cpp.s
+
 src/imagewrapper.o: src/imagewrapper.cpp.o
 
 .PHONY : src/imagewrapper.o
@@ -176,6 +230,33 @@ src/imagewrapper.s: src/imagewrapper.cpp.s
 src/imagewrapper.cpp.s:
 	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/imagewrapper.cpp.s
 .PHONY : src/imagewrapper.cpp.s
+
+src/invariants.o: src/invariants.cpp.o
+
+.PHONY : src/invariants.o
+
+# target to build an object file
+src/invariants.cpp.o:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/invariants.cpp.o
+.PHONY : src/invariants.cpp.o
+
+src/invariants.i: src/invariants.cpp.i
+
+.PHONY : src/invariants.i
+
+# target to preprocess a source file
+src/invariants.cpp.i:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/invariants.cpp.i
+.PHONY : src/invariants.cpp.i
+
+src/invariants.s: src/invariants.cpp.s
+
+.PHONY : src/invariants.s
+
+# target to generate assembly for a file
+src/invariants.cpp.s:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/invariants.cpp.s
+.PHONY : src/invariants.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -243,9 +324,18 @@ help:
 	@echo "... src/action.o"
 	@echo "... src/action.i"
 	@echo "... src/action.s"
+	@echo "... src/element.o"
+	@echo "... src/element.i"
+	@echo "... src/element.s"
+	@echo "... src/elementgetter.o"
+	@echo "... src/elementgetter.i"
+	@echo "... src/elementgetter.s"
 	@echo "... src/imagewrapper.o"
 	@echo "... src/imagewrapper.i"
 	@echo "... src/imagewrapper.s"
+	@echo "... src/invariants.o"
+	@echo "... src/invariants.i"
+	@echo "... src/invariants.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -8,6 +8,14 @@ ImageWrapper::ImageWrapper(Mat img, string saveFilePath) {
 
 void ImageWrapper::performClassification() {
 	image = segmentation->getSegmentedImage();
+
+	ElementGetter eg(image);
+	vector<Element*> vec = eg.getElements();
+	cout << "Ilość elementów: " << vec.size() << endl;
+	for(int i = 0; i < vec.size(); ++i) {
+		vec[i]->drawElement(image);
+	}
+
 }
 
 void ImageWrapper::writeImage() {
