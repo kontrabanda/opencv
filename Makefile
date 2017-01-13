@@ -231,33 +231,6 @@ src/imagewrapper.cpp.s:
 	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/imagewrapper.cpp.s
 .PHONY : src/imagewrapper.cpp.s
 
-src/invariants.o: src/invariants.cpp.o
-
-.PHONY : src/invariants.o
-
-# target to build an object file
-src/invariants.cpp.o:
-	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/invariants.cpp.o
-.PHONY : src/invariants.cpp.o
-
-src/invariants.i: src/invariants.cpp.i
-
-.PHONY : src/invariants.i
-
-# target to preprocess a source file
-src/invariants.cpp.i:
-	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/invariants.cpp.i
-.PHONY : src/invariants.cpp.i
-
-src/invariants.s: src/invariants.cpp.s
-
-.PHONY : src/invariants.s
-
-# target to generate assembly for a file
-src/invariants.cpp.s:
-	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/invariants.cpp.s
-.PHONY : src/invariants.cpp.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -333,9 +306,6 @@ help:
 	@echo "... src/imagewrapper.o"
 	@echo "... src/imagewrapper.i"
 	@echo "... src/imagewrapper.s"
-	@echo "... src/invariants.o"
-	@echo "... src/invariants.i"
-	@echo "... src/invariants.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
