@@ -1,6 +1,11 @@
 #include "segmentation.h"
 
 Segmentation::Segmentation(Mat& img): image(img) {
+	/*for(int i = 0; i < 20; ++i) {
+		windowFilter();
+	}
+	imwrite("./output/test.JPG", image);*/
+
 	filterAvg(10);
 
 	int colors[3] = {-1, 254, -1};
@@ -10,7 +15,6 @@ Segmentation::Segmentation(Mat& img): image(img) {
 		closing();
 	}
 }
-
 
 void Segmentation::filterAvg(int threshold) {
 	Mat_<Vec3b> _I = image;
@@ -56,6 +60,61 @@ void Segmentation::filterColors(int* colors) {
 	}
 
 	image = _I;
+}
+
+void Segmentation::windowFilter() {
+	struct Window {
+		Mat_<Vec3b>& image;
+		int x;
+		int y;
+
+		double b;
+		double g;
+		double r;
+
+		Window(Mat_<Vec3b>& image, int y, int x): image(image),  y(y), x(x){
+			b = 0, g = 0, r = 0;
+
+			getWindowValue();
+		}
+
+		double getPixelValue(int y, int x, int color) {
+			if(y < 0 || x < 0 || y >= image.rows || x >= image.cols) {
+				return -1;
+			}
+
+			return image(y, x)[color];
+		}
+
+		double getWindowValue() {
+			for(int j = -1; j <= 1; ++j) {
+				for(int i = -1; i <= 1; ++i) {
+					b += getPixelValue(y + i, x + j, 0);
+					g += getPixelValue(y + i, x + j, 1);
+					r += getPixelValue(y + i, x + j, 2);
+				}
+			}
+
+			b /= 9;
+			g /= 9;
+			r /= 9;
+		}
+	};
+
+	Mat_<Vec3b> _I = image;
+	Mat_<Vec3b> result = image.clone();
+
+	for(int i = 0; i < _I.rows; ++i) {
+		for(int j = 0; j < _I.cols; ++j) {
+			Window w(_I, i, j);
+
+			result(i, j)[0] = w.b;
+			result(i, j)[1] = w.g;
+			result(i, j)[2] = w.r;
+		}
+	}
+
+	image = result;
 }
 
 void Segmentation::dilatation() {

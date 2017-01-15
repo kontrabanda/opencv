@@ -20,6 +20,7 @@ private:
 	void erosion();
 	void opening();
 	void closing();
+	void windowFilter();
 
 public:
 	Segmentation(Mat& img);
