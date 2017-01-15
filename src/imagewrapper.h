@@ -17,10 +17,10 @@ class ImageWrapper {
 private:
 	string saveFilePath;
 	Mat image;
+	Mat inputImage;
 	Segmentation* segmentation;
 
 public:
-
 	ImageWrapper(Mat img, string saveFilePath);
 	
 	void performClassification();

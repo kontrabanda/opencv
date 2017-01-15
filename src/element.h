@@ -11,19 +11,47 @@
 using namespace std;
 using namespace cv;
 
+class Color {
+public:
+	double r;
+	double g;
+	double b;
+
+	Color(double b, double g, double r): r(r), g(g), b(b) {}
+};
+
+class ColorPoint {
+public:
+	int x;
+	int y;
+	Color* color;
+	
+	ColorPoint(int x, int y, double b, double g, double r) {
+		this->x = x;
+		this->y = y;
+		color = new Color(b, g, r);
+	}
+
+	~ColorPoint() {
+		delete color;
+	}
+};
+
 class Element {
 
 private:
-	Point p;
-	vector<Point> points;
+	vector<ColorPoint*> points;
 	double avgX;
 	double avgY;
 
+	void decorateColor(vector<Point> points, Mat& inputImg);
 	double getSmallmInvariant(int, int);
 	double getBigMInvariant(int, int);
+	Color getAvgColor();
+	Color getColorStandardDev();
 
 public:
-	Element(vector<Point> points);
+	Element(vector<Point> points, Mat& img);
 
 	int size();
 	void drawElement(Mat& img);
@@ -32,6 +60,9 @@ public:
 	double getM3();
 	double getM7();
 	void print();
+	int getArea();
+
+	~Element();
 };
 
 #endif

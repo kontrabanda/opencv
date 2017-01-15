@@ -17,13 +17,14 @@ class ElementGetter {
 
 private:
 	Mat image;
+	Mat inputImage;
 
 	Element* growElement(Point);
 	void appendPointNeighborhood(Point, vector<Point>&);
 	void appendPoint(Point, vector<Point>&);
 
 public:
-	ElementGetter(Mat& img);
+	ElementGetter(Mat& img, Mat& inputImage);
 	vector<Element*> getElements();
 };
 

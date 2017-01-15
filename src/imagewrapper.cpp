@@ -3,22 +3,21 @@
 ImageWrapper::ImageWrapper(Mat img, string saveFilePath) {
 	this->saveFilePath = saveFilePath;
 	image = img.clone();
+	inputImage = img.clone();
 	segmentation = new Segmentation(image);
 }
 
 void ImageWrapper::performClassification() {
 	image = segmentation->getSegmentedImage();
 
-	ElementGetter eg(image);
+	ElementGetter eg(image, inputImage);
 	vector<Element*> vec = eg.getElements();
 	cout << "Ilość elementów: " << vec.size() << endl;
 	
 	for(int i = 0; i < vec.size(); ++i) {
-		
 		vec[i]->drawElement(image);
 		vec[i]->print();
 	}
-
 }
 
 void ImageWrapper::writeImage() {

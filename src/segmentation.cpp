@@ -6,9 +6,9 @@ Segmentation::Segmentation(Mat& img): image(img) {
 	int colors[3] = {-1, 254, -1};
 	filterColors(colors);
 
-	closing();
-	closing();
-	closing();
+	for(int i = 0; i < 10; ++i) {
+		closing();
+	}
 }
 
 

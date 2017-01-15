@@ -1,7 +1,8 @@
  #include "elementgetter.h"
 
-ElementGetter::ElementGetter(Mat& img) {
+ElementGetter::ElementGetter(Mat& img, Mat& inputImage) {
 	this->image = img.clone();
+	this->inputImage = inputImage.clone();
 }
 
 vector<Element*> ElementGetter::getElements() {
@@ -51,7 +52,7 @@ Element* ElementGetter::growElement(Point startPoint) {
 
 	image = _I;
 
-	Element* result = new Element(elements);
+	Element* result = new Element(elements, inputImage);
 	return result;
 }
 
