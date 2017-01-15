@@ -1,1 +1,9 @@
 - znalezienie pełnego elementu -> trzeba rozpoznac że to nie pojedynczy piksel tylko ileś pikseli w grupie
+
+
+- sprawdzenie niezmienników -> czy to na pewno koło
+- wyszukanie obiektu konfiguracyjnego -> po niezmiennikach i największe pole
+
+Klasyfikacja monety:
+- pole powieszchni
+- średnia jasność dla każdego koloru

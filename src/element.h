@@ -28,8 +28,10 @@ public:
 	int size();
 	void drawElement(Mat& img);
 	double getM1();
+	double getM2();
 	double getM3();
 	double getM7();
+	void print();
 };
 
 #endif
