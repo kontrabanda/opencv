@@ -1,27 +1,17 @@
 #include "segmentation.h"
 
-Segmentation::Segmentation(Mat& img): image(img) {
-	/*for(int i = 0; i < 20; ++i) {
-		windowFilter();
-	}
-	imwrite("./output/test.JPG", image);*/
-
-	filterAvg(10);
-
-	int colors[3] = {-1, 254, -1};
-	filterColors(colors);
-
-	for(int i = 0; i < 10; ++i) {
-		closing();
-	}
+Segmentation::Segmentation(Mat& img) {
+	this->image = img.clone();
+	this->inputImage = img.clone();
 }
 
 void Segmentation::filterAvg(int threshold) {
 	Mat_<Vec3b> _I = image;
+	Mat_<Vec3b> _U = inputImage;
 
-	for(int i = 0; i < _I.rows; ++i) {
-		for(int j = 0; j < _I.cols; ++j) {
-			int avg = (_I(i, j)[0] + _I(i, j)[1] + _I(i, j)[2])/3;
+	for(int i = 0; i < _U.rows; ++i) {
+		for(int j = 0; j < _U.cols; ++j) {
+			int avg = (_U(i, j)[0] + _U(i, j)[1] + _U(i, j)[2])/3;
 			
 			for(int c = 0; c < 3; ++c) {
 				int value = image.at<Vec3b>(i,j)[c];
@@ -38,20 +28,17 @@ void Segmentation::filterAvg(int threshold) {
 	image = _I;
 }
 
-void Segmentation::filterColors(int* colors) {
+void Segmentation::filterColorsMax(int* colors) {
+	Mat_<Vec3b> _U = inputImage;
 	Mat_<Vec3b> _I = image;
 
-	for(int i = 0; i < _I.rows; ++i) {
-		for(int j = 0; j < _I.cols; ++j) {
-			int blue = _I(i, j)[0];
-			int green = _I(i, j)[1];
-			int red = _I(i, j)[2];
+	for(int i = 0; i < _U.rows; ++i) {
+		for(int j = 0; j < _U.cols; ++j) {
+			int blue = _U(i, j)[0];
+			int green = _U(i, j)[1];
+			int red = _U(i, j)[2];
 
-			if(blue > colors[0] && green > colors[1] && red > colors[2]) {
-				_I(i, j)[0] = 255;
-				_I(i, j)[1] = 255;
-				_I(i, j)[2] = 255;
-			} else {
+			if(blue >= colors[0] || green >= colors[1] || red >= colors[2]) {
 				_I(i, j)[0] = 0;
 				_I(i, j)[1] = 0;
 				_I(i, j)[2] = 0;
@@ -59,8 +46,48 @@ void Segmentation::filterColors(int* colors) {
 		}
 	}
 
+	//image = _I;
+}
+
+void Segmentation::filterColorsMin(int* colors) {
+	Mat_<Vec3b> _U = inputImage;
+	Mat_<Vec3b> _I = image;
+
+	for(int i = 0; i < _U.rows; ++i) {
+		for(int j = 0; j < _U.cols; ++j) {
+			int blue = _U(i, j)[0];
+			int green = _U(i, j)[1];
+			int red = _U(i, j)[2];
+
+			if(blue <= colors[0] || green <= colors[1] || red <= colors[2]) {
+				_I(i, j)[0] = 0;
+				_I(i, j)[1] = 0;
+				_I(i, j)[2] = 0;
+			}
+		}
+	}
+
+	//image = _I;
+}
+
+void Segmentation::binarization() {
+	Mat_<Vec3b> _I = image;
+
+	for(int i = 0; i < _I.rows; ++i) {
+		for(int j = 0; j < _I.cols; ++j) {
+			int value = _I(i, j)[0] + _I(i, j)[1] + _I(i, j)[2];
+
+			if(value > 0) {
+				_I(i, j)[0] = 255;
+				_I(i, j)[1] = 255;
+				_I(i, j)[2] = 255;
+			}
+		}
+	}
+
 	image = _I;
 }
+
 
 void Segmentation::windowFilter() {
 	struct Window {

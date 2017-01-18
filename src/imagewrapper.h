@@ -18,12 +18,15 @@ private:
 	string saveFilePath;
 	Mat image;
 	Mat inputImage;
-	Segmentation* segmentation;
+	Segmentation* calibrationSegmentation;
+	Segmentation* contentSegmentation;
 
 public:
 	ImageWrapper(Mat img, string saveFilePath);
 	
 	void performClassification();
+	void performCalibrationSegmentation();
+	void performContentSegmentation();
 	void writeImage();
 
 	~ImageWrapper();

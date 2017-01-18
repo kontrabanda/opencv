@@ -8,23 +8,28 @@
 #include <iostream>
 
 using namespace cv;
+using namespace std;
 
 class Segmentation {
 private: 
-	Mat& image;
+	Mat image;
+	Mat inputImage;
 
 	int getValidateColor(int color);
+
+public:
+	Segmentation(Mat& img);
+
+	Mat getSegmentedImage();
 	void filterAvg(int);
-	void filterColors(int*);
+	void filterColorsMin(int*);
+	void filterColorsMax(int*);
+	void binarization();
 	void dilatation();
 	void erosion();
 	void opening();
 	void closing();
 	void windowFilter();
-
-public:
-	Segmentation(Mat& img);
-	Mat getSegmentedImage();
 };
 
 #endif

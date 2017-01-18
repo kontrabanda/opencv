@@ -4,11 +4,48 @@ ImageWrapper::ImageWrapper(Mat img, string saveFilePath) {
 	this->saveFilePath = saveFilePath;
 	image = img.clone();
 	inputImage = img.clone();
-	segmentation = new Segmentation(image);
+	calibrationSegmentation = new Segmentation(image);
+	contentSegmentation = new Segmentation(image);
 }
 
 void ImageWrapper::performClassification() {
-	image = segmentation->getSegmentedImage();
+	//performContentSegmentation();
+	performCalibrationSegmentation();
+
+	
+}
+
+void ImageWrapper::performCalibrationSegmentation() {
+	int colorsMin[3] = {-1, -1, 140};
+	int colorsMax[3] = {256, 70, 256};
+
+	calibrationSegmentation->filterColorsMin(colorsMin);
+	calibrationSegmentation->filterColorsMax(colorsMax);
+	calibrationSegmentation->binarization();
+
+	image = calibrationSegmentation->getSegmentedImage();
+
+	ElementGetter eg(image, inputImage);
+	vector<Element*> vec = eg.getElements();
+	cout << "Ilość elementów: " << vec.size() << endl;
+	
+	for(int i = 0; i < vec.size(); ++i) {
+		vec[i]->drawElement(image);
+		vec[i]->print();
+	}
+}
+
+void ImageWrapper::performContentSegmentation() {
+	int colors[3] = {-1, 254, -1};
+	image = contentSegmentation->getSegmentedImage();
+
+	contentSegmentation->filterAvg(10);
+	contentSegmentation->filterColorsMin(colors);
+	contentSegmentation->binarization();
+
+	for(int i = 0; i < 10; ++i) {
+		contentSegmentation->closing();
+	}
 
 	ElementGetter eg(image, inputImage);
 	vector<Element*> vec = eg.getElements();
@@ -27,5 +64,6 @@ void ImageWrapper::writeImage() {
 }
 
 ImageWrapper::~ImageWrapper() {
-	delete segmentation;
+	delete contentSegmentation;
+	delete calibrationSegmentation;
 }

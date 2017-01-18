@@ -15,7 +15,7 @@ vector<Element*> ElementGetter::getElements() {
 				Point point(i, j);
 				Element* el = this->growElement(point);
 
-				if(el->size() < 10) {
+				if(el->size() < 150) {
 					delete el;
 				} else {
 					result.push_back(el);
@@ -46,7 +46,6 @@ Element* ElementGetter::growElement(Point startPoint) {
 
 			elements.push_back(currentPoint);
 			appendPointNeighborhood(currentPoint, pretenders);
-			//cout << pretenders.size() << endl;
 		}
 	} while(pretenders.size() > 0);
 
