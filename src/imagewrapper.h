@@ -9,6 +9,7 @@
 #include "segmentation.h"
 #include "elementgetter.h"
 #include "element.h"
+#include "classifier.h"
 
 using namespace cv;
 using namespace std;
@@ -16,10 +17,12 @@ using namespace std;
 class ImageWrapper {
 private:
 	string saveFilePath;
+	Mat calibrationImage;
 	Mat image;
 	Mat inputImage;
 	Segmentation* calibrationSegmentation;
 	Segmentation* contentSegmentation;
+	Classifier* classifier;
 
 public:
 	ImageWrapper(Mat img, string saveFilePath);

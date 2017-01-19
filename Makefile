@@ -150,6 +150,87 @@ src/action.cpp.s:
 	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/action.cpp.s
 .PHONY : src/action.cpp.s
 
+src/base.o: src/base.cpp.o
+
+.PHONY : src/base.o
+
+# target to build an object file
+src/base.cpp.o:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/base.cpp.o
+.PHONY : src/base.cpp.o
+
+src/base.i: src/base.cpp.i
+
+.PHONY : src/base.i
+
+# target to preprocess a source file
+src/base.cpp.i:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/base.cpp.i
+.PHONY : src/base.cpp.i
+
+src/base.s: src/base.cpp.s
+
+.PHONY : src/base.s
+
+# target to generate assembly for a file
+src/base.cpp.s:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/base.cpp.s
+.PHONY : src/base.cpp.s
+
+src/calibrationclass.o: src/calibrationclass.cpp.o
+
+.PHONY : src/calibrationclass.o
+
+# target to build an object file
+src/calibrationclass.cpp.o:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/calibrationclass.cpp.o
+.PHONY : src/calibrationclass.cpp.o
+
+src/calibrationclass.i: src/calibrationclass.cpp.i
+
+.PHONY : src/calibrationclass.i
+
+# target to preprocess a source file
+src/calibrationclass.cpp.i:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/calibrationclass.cpp.i
+.PHONY : src/calibrationclass.cpp.i
+
+src/calibrationclass.s: src/calibrationclass.cpp.s
+
+.PHONY : src/calibrationclass.s
+
+# target to generate assembly for a file
+src/calibrationclass.cpp.s:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/calibrationclass.cpp.s
+.PHONY : src/calibrationclass.cpp.s
+
+src/classifier.o: src/classifier.cpp.o
+
+.PHONY : src/classifier.o
+
+# target to build an object file
+src/classifier.cpp.o:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/classifier.cpp.o
+.PHONY : src/classifier.cpp.o
+
+src/classifier.i: src/classifier.cpp.i
+
+.PHONY : src/classifier.i
+
+# target to preprocess a source file
+src/classifier.cpp.i:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/classifier.cpp.i
+.PHONY : src/classifier.cpp.i
+
+src/classifier.s: src/classifier.cpp.s
+
+.PHONY : src/classifier.s
+
+# target to generate assembly for a file
+src/classifier.cpp.s:
+	$(MAKE) -f CMakeFiles/pobr.dir/build.make CMakeFiles/pobr.dir/src/classifier.cpp.s
+.PHONY : src/classifier.cpp.s
+
 src/element.o: src/element.cpp.o
 
 .PHONY : src/element.o
@@ -297,6 +378,15 @@ help:
 	@echo "... src/action.o"
 	@echo "... src/action.i"
 	@echo "... src/action.s"
+	@echo "... src/base.o"
+	@echo "... src/base.i"
+	@echo "... src/base.s"
+	@echo "... src/calibrationclass.o"
+	@echo "... src/calibrationclass.i"
+	@echo "... src/calibrationclass.s"
+	@echo "... src/classifier.o"
+	@echo "... src/classifier.i"
+	@echo "... src/classifier.s"
 	@echo "... src/element.o"
 	@echo "... src/element.i"
 	@echo "... src/element.s"

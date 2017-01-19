@@ -21,7 +21,7 @@ public:
 	Segmentation(Mat& img);
 
 	Mat getSegmentedImage();
-	void filterAvg(int);
+	void filterAvg(int*, int*, int*);
 	void filterColorsMin(int*);
 	void filterColorsMax(int*);
 	void binarization();

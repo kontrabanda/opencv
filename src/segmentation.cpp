@@ -5,7 +5,7 @@ Segmentation::Segmentation(Mat& img) {
 	this->inputImage = img.clone();
 }
 
-void Segmentation::filterAvg(int threshold) {
+void Segmentation::filterAvg(int* blueT, int* greenT, int* redT) {
 	Mat_<Vec3b> _I = image;
 	Mat_<Vec3b> _U = inputImage;
 
@@ -13,14 +13,20 @@ void Segmentation::filterAvg(int threshold) {
 		for(int j = 0; j < _U.cols; ++j) {
 			int avg = (_U(i, j)[0] + _U(i, j)[1] + _U(i, j)[2])/3;
 			
-			for(int c = 0; c < 3; ++c) {
-				int value = image.at<Vec3b>(i,j)[c];
+			int blue = _U(i, j)[0];
+			int green = _U(i, j)[1];
+			int red = _U(i, j)[2];
 
-				if(avg + threshold > value && avg - threshold < value) {
-					image.at<Vec3b>(i,j)[c] = 255;					
-				} else {
-					image.at<Vec3b>(i,j)[c] = 0;
-				}
+			if(avg + blueT[1] > blue && avg + blueT[0] < blue
+				&& avg + greenT[1] > green && avg + greenT[0] < green
+				&& avg + redT[1] > red && avg + redT[0] < red) {
+				_I(i, j)[0] = 255;
+				_I(i, j)[1] = 255;
+				_I(i, j)[2] = 255;			
+			} else {
+				_I(i, j)[0] = 0;
+				_I(i, j)[1] = 0;
+				_I(i, j)[2] = 0;
 			}
 		}
 	}

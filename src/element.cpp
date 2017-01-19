@@ -7,6 +7,17 @@ Element::Element(vector<Point> points, Mat& img) {
 	avgY = getSmallmInvariant(0, 1)/getSmallmInvariant(0, 0);
 }
 
+Element::Element(vector<ColorPoint*>& elPoints) {
+	for(vector<ColorPoint*>::iterator it = elPoints.begin(); it != elPoints.end(); ++it) {
+		Color* color = (*it)->color;
+		ColorPoint* cp = new ColorPoint((*it)->x, (*it)->y, color->b, color->g, color->r);
+		this->points.push_back(cp);
+	}
+
+	avgX = getSmallmInvariant(1, 0)/getSmallmInvariant(0, 0);
+	avgY = getSmallmInvariant(0, 1)/getSmallmInvariant(0, 0);	
+}
+
 int Element::size() {
 	return points.size();
 }
@@ -150,6 +161,10 @@ void Element::print() {
 	Color stdColor = getColorStandardDev();
 	cout << "VarianceColor: b=" << stdColor.b << ", g=" << stdColor.g << ", r=" << stdColor.r << endl;
 }
+
+vector<ColorPoint*>& Element::getPoints() {
+	return this->points;
+};
 
 Element::~Element() {
 	for(vector<ColorPoint*>::iterator it = points.begin(); it != points.end(); ++it) {

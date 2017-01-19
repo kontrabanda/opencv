@@ -40,18 +40,18 @@ public:
 class Element {
 
 private:
-	vector<ColorPoint*> points;
 	double avgX;
 	double avgY;
 
 	void decorateColor(vector<Point> points, Mat& inputImg);
 	double getSmallmInvariant(int, int);
 	double getBigMInvariant(int, int);
-	Color getAvgColor();
-	Color getColorStandardDev();
 
 public:
+	vector<ColorPoint*> points;
+	
 	Element(vector<Point> points, Mat& img);
+	Element(vector<ColorPoint*>& elPoints);
 
 	int size();
 	void drawElement(Mat& img);
@@ -61,6 +61,9 @@ public:
 	double getM7();
 	void print();
 	int getArea();
+	vector<ColorPoint*>& getPoints();
+	Color getAvgColor();
+	Color getColorStandardDev();
 
 	~Element();
 };
