@@ -11,6 +11,16 @@
 #include "base.h"
 #include "calibrationclass.h"
 
+#include "_1grclass.h"
+#include "_2grclass.h"
+#include "_5grclass.h"
+#include "_10grclass.h"
+#include "_20grclass.h"
+#include "_50grclass.h"
+#include "_1zlclass.h"
+#include "_2zlclass.h"
+#include "_5zlclass.h"
+
 using namespace cv;
 using namespace std;
 
@@ -29,14 +39,20 @@ enum COINS {
 
 class Classifier {
 private:
+	static const int CLASSES_COUNT = 9;
+
 	Element* calibrationElement;
 	Mat& image;
+	Base* classesCheck[CLASSES_COUNT];
 	vector<Element*>* classifiedElements;
+
 	Element* getCalibrationElement(vector<Element*>*);
+	void initClassesCheck();
 
 public:
 	Classifier(vector<Element*>*, Mat&);
-	void classify();
+	void classify(Element*);
+	void printItemsInfo(int, Mat&);
 
 	~Classifier();
 };

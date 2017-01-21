@@ -11,16 +11,12 @@ ImageWrapper::ImageWrapper(Mat img, string saveFilePath) {
 
 void ImageWrapper::performClassification() {
 	performCalibrationSegmentation();
-
-
-	//performContentSegmentation();
-
-	
+	performContentSegmentation();
 }
 
 void ImageWrapper::performCalibrationSegmentation() {
 	cout << "Perform Calibration Segmentation" << endl;
-	int colorsMin[3] = {-1, -1, 110};
+	int colorsMin[3] = {-1, -1, 90};
 	int colorsMax[3] = {256, 130, 256};
 
 	calibrationSegmentation->filterColorsMin(colorsMin);
@@ -34,10 +30,9 @@ void ImageWrapper::performCalibrationSegmentation() {
 	}
 
 	ElementGetter eg(calibrationImage, inputImage);
-	vector<Element*> vec = eg.getElements();
-	vec[0]->print();
-	classifier = new Classifier(&vec, calibrationImage);
-
+	calibrationElements = eg.getElements();
+	(*calibrationElements)[0]->print();
+	classifier = new Classifier(calibrationElements, calibrationImage);
 }
 
 void ImageWrapper::performContentSegmentation() {
@@ -60,13 +55,15 @@ void ImageWrapper::performContentSegmentation() {
 	image = contentSegmentation->getSegmentedImage();
 
 	ElementGetter eg(image, inputImage);
-	vector<Element*> vec = eg.getElements();
-	cout << "Ilość elementów: " << vec.size() << endl;
+	findedElements = eg.getElements();
+	cout << "Ilość elementów: " << (*findedElements).size() << endl;
 	
-	for(int i = 0; i < vec.size(); ++i) {
-		vec[i]->drawElement(image);
-		vec[i]->print();
+	for(int i = 0; i < (*findedElements).size(); ++i) {
+		classifier->classify((*findedElements)[i]);
 	}
+
+	// 10GR
+	classifier->printItemsInfo(3, image);
 }
 
 void ImageWrapper::writeImage() {
@@ -79,6 +76,18 @@ void ImageWrapper::writeImage() {
 }
 
 ImageWrapper::~ImageWrapper() {
+	for(int i = 0; i < (*calibrationElements).size(); ++i) {
+		delete (*calibrationElements)[i];
+	}
+
+	delete calibrationElements;
+
+	for(int i = 0; i < (*findedElements).size(); ++i) {
+		delete (*findedElements)[i];
+	}
+
+	delete findedElements;
+
 	delete contentSegmentation;
 	delete calibrationSegmentation;
 	delete classifier;

@@ -5,9 +5,9 @@ ElementGetter::ElementGetter(Mat& img, Mat& inputImage) {
 	this->inputImage = inputImage.clone();
 }
 
-vector<Element*> ElementGetter::getElements() {
+vector<Element*>* ElementGetter::getElements() {
 	Mat_<Vec3b> _I = image;
-	vector<Element*> result;
+	vector<Element*>* result = new vector<Element*>();
 
 	for(int i = 0; i < _I.rows; ++i) {
 		for(int j = 0; j < _I.cols; ++j) {
@@ -18,7 +18,7 @@ vector<Element*> ElementGetter::getElements() {
 				if(el->size() < 150) {
 					delete el;
 				} else {
-					result.push_back(el);
+					(*result).push_back(el);
 				}
 			}
 		}

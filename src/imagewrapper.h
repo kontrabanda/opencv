@@ -20,8 +20,13 @@ private:
 	Mat calibrationImage;
 	Mat image;
 	Mat inputImage;
+	
 	Segmentation* calibrationSegmentation;
 	Segmentation* contentSegmentation;
+
+	vector<Element*>* calibrationElements;
+	vector<Element*>* findedElements;
+
 	Classifier* classifier;
 
 public:

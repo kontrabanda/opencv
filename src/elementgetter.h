@@ -25,7 +25,7 @@ private:
 
 public:
 	ElementGetter(Mat& img, Mat& inputImage);
-	vector<Element*> getElements();
+	vector<Element*>* getElements();
 };
 
 #endif
