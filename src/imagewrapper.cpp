@@ -31,7 +31,6 @@ void ImageWrapper::performCalibrationSegmentation() {
 
 	ElementGetter eg(calibrationImage, inputImage);
 	calibrationElements = eg.getElements();
-	(*calibrationElements)[0]->print();
 	classifier = new Classifier(calibrationElements, calibrationImage);
 }
 
@@ -56,14 +55,14 @@ void ImageWrapper::performContentSegmentation() {
 
 	ElementGetter eg(image, inputImage);
 	findedElements = eg.getElements();
-	cout << "Ilość elementów: " << (*findedElements).size() << endl;
+	//cout << "Ilość elementów: " << (*findedElements).size() << endl;
 	
 	for(int i = 0; i < (*findedElements).size(); ++i) {
 		classifier->classify((*findedElements)[i]);
 	}
 
 	// 10GR
-	classifier->printItemsInfo(3, image);
+	//classifier->printItemsInfo(image);
 }
 
 void ImageWrapper::writeImage() {

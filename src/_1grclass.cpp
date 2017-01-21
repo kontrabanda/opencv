@@ -5,6 +5,10 @@ _1GrClass::_1GrClass(Element* calibrationElement) {
 }
 
 bool _1GrClass::checkIsThisClass(Element& el) {
+	if(!isCoinShape(el)) {
+		return false;
+	}
+	
 	double areaRatio = (double)el.getArea()/(double)calibrationElement->getArea();
 	
 	if(areaRatio < areaMax && areaRatio > areaMin) {

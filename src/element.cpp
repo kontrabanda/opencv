@@ -149,10 +149,6 @@ double Element::getM7() {
 }
 
 void Element::print() {
-	//cout << "M1: " << getM1() << endl;
-	//cout << "M2: " << getM2() << endl;
-	//cout << "M3: " << getM3() << endl;
-	//cout << "M7: " << getM7() << endl;
 	cout << "Area: " << getArea() << endl;
 
 	Color avgColor = getAvgColor();

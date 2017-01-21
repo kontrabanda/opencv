@@ -5,6 +5,10 @@ _2ZlClass::_2ZlClass(Element* calibrationElement) {
 }
 
 bool _2ZlClass::checkIsThisClass(Element& el) {
+	if(!isCoinShape(el)) {
+		return false;
+	}
+	
 	double areaRatio = (double)el.getArea()/(double)calibrationElement->getArea();
 
 	if(areaRatio < areaMax && areaRatio > areaMin) {

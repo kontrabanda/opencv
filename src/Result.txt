@@ -1,0 +1,64 @@
+10gr1 - 10gr
+10gr2 - 10gr
+10gr3 - 10gr
+10gr4 - -		!!!
+10gr5 - 10gr
+10gr6 - 2gr		!!!
+10gr7 - 10gr
+
+
+1gr1 - 1gr
+1gr4 - 1gr
+1gr5 - 1gr
+1gr6 - 1gr
+1gr8 - 1gr
+
+
+1zl1 - -		!!!
+1zl2 - 1zl, 5zl !!!
+1zl4 - 1zl
+1zl6 - 1zl
+1zl9 - 1zl
+
+
+20gr1 - 20gr 
+20gr2 - 20gr
+20gr4 - 5gr, 20gr !!!
+20gr5 - 5gr, 20gr !!!
+20gr6 - 20gr
+20gr7 - 20gr
+
+
+2gr1 - -		!!!
+2gr4 - 2gr
+2gr5 - 2gr, 10gr !!!
+2gr6 - 2gr
+2gr7 - 2gr, 10gr !!!
+
+
+2zl1 - -		!!!
+2zl4 - 2zl
+2zl5 - 2zl
+2zl6 - 2zl
+2zl7 - 2zl
+
+
+50gr4 - -		!!!
+50gr5 - 50gr
+50gr6 - -		!!!
+50gr9 - -		!!!
+
+
+5gr1 - 5gr, 20gr !!!
+5gr4 - 5gr, 20gr !!!
+5gr5 - 5gr, 20gr !!!
+5gr6 - 5gr, 20gr !!!
+5gr7 - 5gr, 20gr !!!
+
+
+5zl1 - 5zl
+5zl4 - 5zl
+5zl5 - 10gr, 1zl, 5zl !!!
+5zl6 - 5zl
+5zl7 - 5zl
+5zl8 - 5zl

@@ -47,17 +47,18 @@ void Classifier::classify(Element* el) {
 
 	for(int i = 0; i < CLASSES_COUNT; ++i) {
 		if(classesCheck[i]->checkIsThisClass(*el)) {
-			result.push_back(i);
-			index = i;
+			classifiedElements[i].push_back(el);
+			/*result.push_back(i);
+			index = i;*/
 		}
 	}
 
 	if(result.size() == 1) {
-		classifiedElements[index].push_back(el);
+		//classifiedElements[index].push_back(el);
 	}
 }
 
-void Classifier::printItemsInfo(int index, Mat& image) {
+void Classifier::printItemsInfo(Mat& image) {
 	/*vector<Element*> selectedVec = classifiedElements[index];
 	cout << selectedVec.size() << endl;
 

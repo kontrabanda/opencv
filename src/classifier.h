@@ -52,7 +52,7 @@ private:
 public:
 	Classifier(vector<Element*>*, Mat&);
 	void classify(Element*);
-	void printItemsInfo(int, Mat&);
+	void printItemsInfo(Mat&);
 
 	~Classifier();
 };
