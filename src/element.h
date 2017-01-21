@@ -18,6 +18,10 @@ public:
 	double b;
 
 	Color(double b, double g, double r): r(r), g(g), b(b) {}
+
+	double getLightness() {
+		return (b + g + r)/3;
+	}
 };
 
 class ColorPoint {

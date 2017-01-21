@@ -9,6 +9,11 @@ bool Base::checkIsThisClass(Element& el) {
 }
 
 bool Base::isCoinShape(Element& el) {
+	const double M1_MIN = 0.158;
+	const double M1_MAX = 0.161;
+	const double M2_MIN = 0.0253;
+	const double M2_MAX = 0.0256;
+
 	double M1 = el.getM1();
 	double M2 = el.getM2();
 
@@ -18,4 +23,16 @@ bool Base::isCoinShape(Element& el) {
 	}
 
 	return false;
+}
+
+bool Base::isBronze(Color& avgColor) {
+	const double bRatio = 0.85;
+
+	return ((double)avgColor.b/avgColor.getLightness()) <= bRatio;
+}
+
+bool Base::isSilver(Color& avgColor) {
+	const double bRatio = 0.85;
+
+	return ((double)avgColor.b/avgColor.getLightness()) >= bRatio;
 }
