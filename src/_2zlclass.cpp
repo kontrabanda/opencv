@@ -11,7 +11,7 @@ bool _2ZlClass::checkIsThisClass(Element& el) {
 	
 	double areaRatio = (double)el.getArea()/(double)calibrationElement->getArea();
 
-	if(areaRatio < areaMax && areaRatio > areaMin) {
+	if(areaRatio < areaMax && areaRatio > areaMin && isSilverInBronze(el)) {
 		return true;
 	} else {
 		return false;

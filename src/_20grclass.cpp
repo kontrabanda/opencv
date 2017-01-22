@@ -10,8 +10,9 @@ bool _20GrClass::checkIsThisClass(Element& el) {
 	}
 	
 	double areaRatio = (double)el.getArea()/(double)calibrationElement->getArea();
+	Color avgColor = el.getAvgColor();
 
-	if(areaRatio < areaMax && areaRatio > areaMin) {
+	if(areaRatio < areaMax && areaRatio > areaMin && isSilver(avgColor)) {
 		return true;
 	} else {
 		return false;

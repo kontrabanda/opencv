@@ -8,7 +8,7 @@ Classifier::Classifier(vector<Element*>* calibrationElements, Mat& img): image(i
 
 	calibrationElement = getCalibrationElement(calibrationElements);
 	//calibrationElement->print();
-	calibrationElement->drawElement(image);
+	//calibrationElement->drawElement(image);
 
 	initClassesCheck();
 }
@@ -62,9 +62,49 @@ void Classifier::printItemsInfo(Mat& image) {
 	/*vector<Element*> selectedVec = classifiedElements[index];
 	cout << selectedVec.size() << endl;*/
 
+	for(int i = 0; i < classifiedElements[_1_GR].size(); ++i) {
+		Color c(132, 149, 171);
+		classifiedElements[_1_GR][i]->drawElement(image, c);
+	}
+
+	for(int i = 0; i < classifiedElements[_2_GR].size(); ++i) {
+		Color c(76, 96, 121);
+		classifiedElements[_2_GR][i]->drawElement(image, c);
+	}
+
+	for(int i = 0; i < classifiedElements[_5_GR].size(); ++i) {
+		Color c(47, 65, 87);
+		classifiedElements[_5_GR][i]->drawElement(image, c);
+	}
+
+	for(int i = 0; i < classifiedElements[_10_GR].size(); ++i) {
+		Color c(198, 198, 198);
+		classifiedElements[_10_GR][i]->drawElement(image, c);
+	}
+
+	for(int i = 0; i < classifiedElements[_20_GR].size(); ++i) {
+		Color c(160, 160, 160);
+		classifiedElements[_20_GR][i]->drawElement(image, c);
+	}
+
+	for(int i = 0; i < classifiedElements[_50_GR].size(); ++i) {
+		Color c(96, 96, 96);
+		classifiedElements[_50_GR][i]->drawElement(image, c);
+	}
+
+	for(int i = 0; i < classifiedElements[_1_ZL].size(); ++i) {
+		Color c(210, 250, 250);
+		classifiedElements[_1_ZL][i]->drawElement(image, c);
+	}
+
 	for(int i = 0; i < classifiedElements[_2_ZL].size(); ++i) {
-		classifiedElements[_2_ZL][i]->drawElement(image);
-		classifiedElements[_2_ZL][i]->drawCenter(image);
+		Color c(0, 215, 255);
+		classifiedElements[_2_ZL][i]->drawElement(image, c);
+	}
+
+	for(int i = 0; i < classifiedElements[_5_ZL].size(); ++i) {
+		Color c(32, 165, 218);
+		classifiedElements[_5_ZL][i]->drawElement(image, c);
 	}
 
 	cout << "1 GR: " << classifiedElements[_1_GR].size() << endl;

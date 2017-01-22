@@ -12,14 +12,14 @@ bool _10GrClass::checkIsThisClass(Element& el) {
 	double areaRatio = (double)el.getArea()/(double)calibrationElement->getArea();
 	Color avgColor = el.getAvgColor();
 
-	cout << "-------------------------------------" << endl;
+	/*cout << "-------------------------------------" << endl;
 	isBronze(avgColor);
 	isSilver(avgColor);
 	isSilverInBronze(el);
 	isBonzeInSilver(el);
-	cout << "-------------------------------------" << endl;
+	cout << "-------------------------------------" << endl;*/
 
-	if(areaRatio < areaMax && areaRatio > areaMin) {
+	if(areaRatio < areaMax && areaRatio > areaMin && isSilver(avgColor)) {
 		return true;
 	} else {
 		return false;

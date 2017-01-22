@@ -62,7 +62,7 @@ void ImageWrapper::performContentSegmentation() {
 	}
 
 	// 10GR
-	//classifier->printItemsInfo(image);
+	classifier->printItemsInfo(image);
 }
 
 void ImageWrapper::writeImage() {

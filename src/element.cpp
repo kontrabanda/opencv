@@ -22,16 +22,16 @@ int Element::size() {
 	return points.size();
 }
 
-void Element::drawElement(Mat& img) {
+void Element::drawElement(Mat& img, Color& color) {
 	Mat_<Vec3b> _I = img;
 
 	for(int i = 0; i < points.size(); ++i) {
 		int x = points[i]->x;
 		int y = points[i]->y;
 
-		_I(x, y)[0] = points[i]->color->b;
-		_I(x, y)[1] = points[i]->color->g;
-		_I(x, y)[2] = points[i]->color->r;
+		_I(x, y)[0] = color.b;
+		_I(x, y)[1] = color.g;
+		_I(x, y)[2] = color.r;
 	}
 
 	_I = img;

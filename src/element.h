@@ -59,7 +59,7 @@ public:
 	Element(vector<ColorPoint*>& elPoints);
 
 	int size();
-	void drawElement(Mat& img);
+	void drawElement(Mat& img, Color&);
 	double getM1();
 	double getM2();
 	double getM3();
