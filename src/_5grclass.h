@@ -7,7 +7,7 @@
 class _5GrClass: public Base {
 private:
 	static const double areaMin = 0.106;
-	static const double areaMax = 0.113;
+	static const double areaMax = 0.121;
 	Element* calibrationElement;
 
 public:

@@ -1,19 +1,15 @@
 #include "classifier.h"
 
 Classifier::Classifier(vector<Element*>* calibrationElements, Mat& img): image(img) {
-	//TODO tutaj dodac wybieranie elementu kalibrującego
-	//cout << endl << _20_GR << endl << endl;
-	
 	classifiedElements = new vector<Element*>[10];
-
 	calibrationElement = getCalibrationElement(calibrationElements);
-	//calibrationElement->print();
-	//calibrationElement->drawElement(image);
 
 	initClassesCheck();
 }
 
 void Classifier::initClassesCheck() {
+	baseClassifier = new Base();
+
 	classesCheck[_1_GR] = new _1GrClass(calibrationElement);
 	classesCheck[_2_GR] = new _2GrClass(calibrationElement);
 	classesCheck[_5_GR] = new _5GrClass(calibrationElement);
@@ -43,18 +39,17 @@ Element* Classifier::getCalibrationElement(vector<Element*>* calibrationElements
 void Classifier::classify(Element* el) {
 	vector<int> result; 
 	int index = -1;
-	//classifiedElements[_10_GR].push_back(el);
+	bool isClassified = false;
 
 	for(int i = 0; i < CLASSES_COUNT; ++i) {
 		if(classesCheck[i]->checkIsThisClass(*el)) {
 			classifiedElements[i].push_back(el);
-			/*result.push_back(i);
-			index = i;*/
+			isClassified = true;
 		}
 	}
 
-	if(result.size() == 1) {
-		//classifiedElements[index].push_back(el);
+	if(!isClassified && baseClassifier->checkIsThisClass(*el)) {
+		notClassifiedCoins.push_back(el);
 	}
 }
 
@@ -107,6 +102,11 @@ void Classifier::printItemsInfo(Mat& image) {
 		classifiedElements[_5_ZL][i]->drawElement(image, c);
 	}
 
+	for(int i = 0; i < notClassifiedCoins.size(); ++i) {
+		Color c(214, 157, 232);
+		notClassifiedCoins[i]->drawElement(image, c);
+	}	
+
 	cout << "1 GR: " << classifiedElements[_1_GR].size() << endl;
 	cout << "2 GR: " << classifiedElements[_2_GR].size() << endl;
 	cout << "5 GR: " << classifiedElements[_5_GR].size() << endl;
@@ -120,6 +120,7 @@ void Classifier::printItemsInfo(Mat& image) {
 
 Classifier::~Classifier() {
 	delete calibrationElement;
+	delete baseClassifier;
 	delete[] classifiedElements;
 
 	for(int i = 0; i < CLASSES_COUNT; ++i) {

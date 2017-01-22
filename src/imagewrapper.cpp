@@ -47,9 +47,9 @@ void ImageWrapper::performContentSegmentation() {
 	//contentSegmentation->filterColorsMin(colors);
 	contentSegmentation->binarization();
 
-	// for(int i = 0; i < 10; ++i) {
-	// 	contentSegmentation->opening();
-	// }
+	for(int i = 0; i < 10; ++i) {
+		contentSegmentation->opening();
+	}
 
 	image = contentSegmentation->getSegmentedImage();
 

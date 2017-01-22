@@ -5,14 +5,14 @@ Base::Base() {
 }
 
 bool Base::checkIsThisClass(Element& el) {
-	return false;
+	return isCoinShape(el);
 }
 
 bool Base::isCoinShape(Element& el) {
 	const double M1_MIN = 0.158;
-	const double M1_MAX = 0.161;
+	const double M1_MAX = 0.162;
 	const double M2_MIN = 0.0253;
-	const double M2_MAX = 0.0258;
+	const double M2_MAX = 0.0262;
 
 	double M1 = el.getM1();
 	double M2 = el.getM2();
@@ -26,8 +26,9 @@ bool Base::isCoinShape(Element& el) {
 }
 
 bool Base::isBronze(Color& avgColor) {
-	const double bRatio = 0.85;
-	return ((double)avgColor.b/avgColor.getLightness()) <= bRatio;
+	const double bRatio = 0.855;
+	double lightness = avgColor.getLightness();
+	return ((double)avgColor.b/lightness) <= bRatio || (lightness - avgColor.b >= 20);
 }
 
 bool Base::isSilver(Color& avgColor) {
@@ -69,7 +70,13 @@ bool Base::isSilverInBronze(Element& el) {
 	Color innerColor = innerEl->getAvgColor();
 	Color outerColor = outerEl->getAvgColor();
 
-	bool result = (((innerColor.b - outerColor.b > bThreshold) || (innerColor.r - outerColor.r < rThreshold)) && innerColor.r - outerColor.r < 0);
+	double b = innerColor.b - outerColor.b;
+	double r = innerColor.r - outerColor.r;
+
+	bool result = (((b > bThreshold) || (r < rThreshold)) && r - b < rThreshold);
+
+	cout << "Silver in bronze: b=" << innerColor.b - outerColor.b << ", r=" << innerColor.r - outerColor.r << endl;
+	cout << "Silver in bronze: ratio=" << r - b << endl;
 
 	delete innerEl;
 	delete outerEl;

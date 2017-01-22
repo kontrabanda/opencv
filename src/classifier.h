@@ -46,6 +46,9 @@ private:
 	Base* classesCheck[CLASSES_COUNT];
 	vector<Element*>* classifiedElements;
 
+	Base* baseClassifier;
+	vector<Element*> notClassifiedCoins;
+
 	Element* getCalibrationElement(vector<Element*>*);
 	void initClassesCheck();
 

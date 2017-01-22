@@ -6,8 +6,8 @@
 
 class _2ZlClass: public Base {
 private:
-	static const double areaMin = 0.137;
-	static const double areaMax = 0.145;
+	static const double areaMin = 0.134;
+	static const double areaMax = 0.16;
 	Element* calibrationElement;
 
 public:

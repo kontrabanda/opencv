@@ -7,7 +7,7 @@
 class _1ZlClass: public Base {
 private:
 	static const double areaMin = 0.148;
-	static const double areaMax = 0.158;
+	static const double areaMax = 0.162;
 	Element* calibrationElement;
 
 public:
