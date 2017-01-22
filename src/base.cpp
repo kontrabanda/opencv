@@ -32,7 +32,7 @@ bool Base::isBronze(Color& avgColor) {
 }
 
 bool Base::isSilver(Color& avgColor) {
-	const double bRatio = 0.85;
+	const double bRatio = 0.845;
 
 	return ((double)avgColor.b/avgColor.getLightness()) >= bRatio;
 }

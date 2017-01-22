@@ -50,6 +50,7 @@ private:
 	void decorateColor(vector<Point> points, Mat& inputImg);
 	double getSmallmInvariant(int, int);
 	double getBigMInvariant(int, int);
+	ColorPoint* getCenter();
 
 public:
 	vector<ColorPoint*> points;
@@ -68,6 +69,7 @@ public:
 	vector<ColorPoint*>& getPoints();
 	Color getAvgColor();
 	Color getColorStandardDev();
+	void drawCenter(Mat&);
 
 	~Element();
 };

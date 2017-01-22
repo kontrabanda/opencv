@@ -37,6 +37,41 @@ void Element::drawElement(Mat& img) {
 	_I = img;
 }
 
+ColorPoint* Element::getCenter() {
+	int xSum = 0;
+	int ySum = 0;
+
+	for(int i = 0; i < points.size(); ++i) {
+		xSum += points[i]->x;
+		ySum += points[i]->y;
+	}	
+
+	double xCenter = (double)xSum/points.size();
+	double yCenter = (double)ySum/points.size();
+
+	return new ColorPoint(xCenter, yCenter, 0, 0, 0);
+}
+
+void Element::drawCenter(Mat& img) {
+	Mat_<Vec3b> _I = img;
+	int radius = 100;
+	ColorPoint* center = getCenter();
+
+	for(int i = 0; i < points.size(); ++i) {
+		double x = points[i]->x - center->x;
+		double y = points[i]->y - center->y;
+		double distance = pow(pow(y, 2) + pow(x, 2), 0.5);
+
+		if(distance <= radius) {
+			_I(points[i]->x, points[i]->y)[0] = 139;
+			_I(points[i]->x, points[i]->y)[1] = 39;
+			_I(points[i]->x, points[i]->y)[2] = 216;
+		}
+	}	
+
+	delete center;
+}
+
 void Element::decorateColor(vector<Point> points, Mat& img) {
 	Mat_<Vec3b> _I = img;
 
