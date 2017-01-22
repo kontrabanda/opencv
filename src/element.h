@@ -70,6 +70,10 @@ public:
 	Color getAvgColor();
 	Color getColorStandardDev();
 	void drawCenter(Mat&);
+	Element* getOuterElement(int);
+	Element* getInnerElement(int);
+
+	double radiusPlaceholder;
 
 	~Element();
 };

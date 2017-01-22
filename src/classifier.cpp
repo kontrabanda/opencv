@@ -62,9 +62,9 @@ void Classifier::printItemsInfo(Mat& image) {
 	/*vector<Element*> selectedVec = classifiedElements[index];
 	cout << selectedVec.size() << endl;*/
 
-	for(int i = 0; i < classifiedElements[_5_ZL].size(); ++i) {
-		classifiedElements[_5_ZL][i]->drawElement(image);
-		classifiedElements[_5_ZL][i]->drawCenter(image);
+	for(int i = 0; i < classifiedElements[_2_ZL].size(); ++i) {
+		classifiedElements[_2_ZL][i]->drawElement(image);
+		classifiedElements[_2_ZL][i]->drawCenter(image);
 	}
 
 	cout << "1 GR: " << classifiedElements[_1_GR].size() << endl;

@@ -13,11 +13,10 @@ bool _10GrClass::checkIsThisClass(Element& el) {
 	Color avgColor = el.getAvgColor();
 
 	cout << "-------------------------------------" << endl;
-	cout << "LIGHTNESS: l=" << (avgColor.b + avgColor.g + avgColor.r)/3 << endl;
-	cout << "COLOR: b=" << avgColor.b << ", g=" << avgColor.g << ", r=" << avgColor.r << endl; 
-	cout << "BRATIO: ratio=" << avgColor.b/avgColor.getLightness() << endl;
-	cout << "isBronze: " << isBronze(avgColor) << endl;
-	cout << "isSilver: " << isSilver(avgColor) << endl;
+	isBronze(avgColor);
+	isSilver(avgColor);
+	isSilverInBronze(el);
+	isBonzeInSilver(el);
 	cout << "-------------------------------------" << endl;
 
 	if(areaRatio < areaMax && areaRatio > areaMin) {

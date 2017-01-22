@@ -17,6 +17,8 @@ protected:
 	bool isCoinShape(Element&);
 	bool isBronze(Color&);
 	bool isSilver(Color&);
+	bool isBonzeInSilver(Element&);
+	bool isSilverInBronze(Element&);
 
 public:
 	Base();

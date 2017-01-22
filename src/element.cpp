@@ -54,7 +54,7 @@ ColorPoint* Element::getCenter() {
 
 void Element::drawCenter(Mat& img) {
 	Mat_<Vec3b> _I = img;
-	int radius = 100;
+	int radius = radiusPlaceholder;
 	ColorPoint* center = getCenter();
 
 	for(int i = 0; i < points.size(); ++i) {
@@ -71,6 +71,41 @@ void Element::drawCenter(Mat& img) {
 
 	delete center;
 }
+
+Element* Element::getInnerElement(int radius) {
+	vector<ColorPoint*>	resultPoints;
+	ColorPoint* center = getCenter();
+
+	for(int i = 0; i < points.size(); ++i) {
+		double x = points[i]->x - center->x;
+		double y = points[i]->y - center->y;
+		double distance = pow(pow(y, 2) + pow(x, 2), 0.5);
+
+		if(distance <= radius) {
+			resultPoints.push_back(points[i]);
+		}
+	}
+
+	return new Element(resultPoints);
+}
+
+Element* Element::getOuterElement(int radius) {
+	vector<ColorPoint*>	resultPoints;
+	ColorPoint* center = getCenter();
+
+	for(int i = 0; i < points.size(); ++i) {
+		double x = points[i]->x - center->x;
+		double y = points[i]->y - center->y;
+		double distance = pow(pow(y, 2) + pow(x, 2), 0.5);
+
+		if(distance >= radius) {
+			resultPoints.push_back(points[i]);
+		}
+	}
+
+	return new Element(resultPoints);
+}
+
 
 void Element::decorateColor(vector<Point> points, Mat& img) {
 	Mat_<Vec3b> _I = img;
@@ -89,7 +124,6 @@ double Element::getSmallmInvariant(int p, int q) {
 	double result = 0;
 
 	for(vector<ColorPoint*>::iterator it = points.begin(); it != points.end(); ++it) {
-		
 		result += pow((*it)->x + 1, p) * pow((*it)->y + 1, q);
 	}
 
