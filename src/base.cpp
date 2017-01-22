@@ -12,7 +12,7 @@ bool Base::isCoinShape(Element& el) {
 	const double M1_MIN = 0.158;
 	const double M1_MAX = 0.161;
 	const double M2_MIN = 0.0253;
-	const double M2_MAX = 0.0256;
+	const double M2_MAX = 0.0258;
 
 	double M1 = el.getM1();
 	double M2 = el.getM2();
@@ -69,10 +69,10 @@ bool Base::isSilverInBronze(Element& el) {
 	Color innerColor = innerEl->getAvgColor();
 	Color outerColor = outerEl->getAvgColor();
 
-	bool result = ((innerColor.b - outerColor.b > bThreshold) || (innerColor.r - outerColor.r < rThreshold) && innerColor.r - outerColor.r < 0);
+	bool result = (((innerColor.b - outerColor.b > bThreshold) || (innerColor.r - outerColor.r < rThreshold)) && innerColor.r - outerColor.r < 0);
 
 	delete innerEl;
 	delete outerEl;
 
-	return false;
+	return result;
 }
